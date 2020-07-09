@@ -1,0 +1,16 @@
+PODS:
+  - PaginatedTableView (1.0.1)
+
+DEPENDENCIES:
+  - PaginatedTableView
+
+SPEC REPOS:
+  trunk:
+    - PaginatedTableView
+
+SPEC CHECKSUMS:
+  PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+
+PODFILE CHECKSUM: 96ca0f59dbf24c94eddc77e3d3ab015d1223c948
+
+COCOAPODS: 1.9.3
