@@ -65,19 +65,19 @@ extension UserListViewController: PaginatedTableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else {
                 fatalError("The dequeued cell is not an instance of TableViewCell.")
             }
-            cell.label.text = "\(self.list[indexPath.row])"
+            cell.setCell(user: self.list[indexPath.row])
             return cell
         } else if(indexPath.row != 0 && (indexPath.row + 1) % 4 == 0) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InvertTableViewCell", for: indexPath) as? InvertTableViewCell else {
                 fatalError("The dequeued cell is not an instance of TableViewCell.")
             }
-            cell.label.text = "\(self.list[indexPath.row])"
+            cell.setCell(user: self.list[indexPath.row])
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NormalTableViewCell", for: indexPath) as? NormalTableViewCell else {
                 fatalError("The dequeued cell is not an instance of TableViewCell.")
             }
-            cell.label.text = "\(self.list[indexPath.row])"
+            cell.setCell(user: self.list[indexPath.row])
             return cell
         }
     }

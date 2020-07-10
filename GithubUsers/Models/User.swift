@@ -12,6 +12,7 @@ struct User: Codable {
     var id: Int
     var login: String
     var avatar_url: String
+    var html_url: String
     var note: String?
     
 }
