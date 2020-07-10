@@ -72,8 +72,6 @@ extension UserListViewController: PaginatedTableViewDelegate {
             do {
                 let users: [NSManagedObject] = try managedContext.fetch(fetchRequest)
                 
-                print(users.count)
-                print(users[0].value(forKey: "login")!)
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
