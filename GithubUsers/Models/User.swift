@@ -14,5 +14,7 @@ struct User: Codable {
     var avatar_url: String
     var html_url: String
     var note: String?
+    var followers: Int?
+    var following: Int?
     
 }

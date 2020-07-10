@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A15143C24B85E3D0088EDFC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15143B24B85E3D0088EDFC /* UserProfileViewController.swift */; };
 		5A22807424B5E2AA006AD711 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A22807324B5E2AA006AD711 /* UserListViewController.swift */; };
 		5A54E65E24B6AF29004F60E8 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A54E65D24B6AF29004F60E8 /* NormalTableViewCell.swift */; };
 		5A54E66024B6B882004F60E8 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A54E65F24B6B882004F60E8 /* NoteTableViewCell.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0F37A66A8B2828CC97970913 /* Pods-GithubUsersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubUsersTests.debug.xcconfig"; path = "Target Support Files/Pods-GithubUsersTests/Pods-GithubUsersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A15143B24B85E3D0088EDFC /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		5A22807324B5E2AA006AD711 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		5A54E65D24B6AF29004F60E8 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		5A54E65F24B6B882004F60E8 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5A15143A24B85A0F0088EDFC /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5A15143B24B85E3D0088EDFC /* UserProfileViewController.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		5A22807024B5E1EF006AD711 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 		5A69E68024B5DBEC007FEC5E /* GithubUsers */ = {
 			isa = PBXGroup;
 			children = (
+				5A15143A24B85A0F0088EDFC /* UserProfile */,
 				5A54E66624B731C4004F60E8 /* Models */,
 				5A54E66324B728ED004F60E8 /* Services */,
 				5A22807024B5E1EF006AD711 /* UserList */,
@@ -342,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A54E65E24B6AF29004F60E8 /* NormalTableViewCell.swift in Sources */,
+				5A15143C24B85E3D0088EDFC /* UserProfileViewController.swift in Sources */,
 				5A69E68C24B5DBEC007FEC5E /* GithubUsers.xcdatamodeld in Sources */,
 				5A22807424B5E2AA006AD711 /* UserListViewController.swift in Sources */,
 				5A69E68224B5DBEC007FEC5E /* AppDelegate.swift in Sources */,

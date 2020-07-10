@@ -8,6 +8,7 @@
 
 import UIKit
 import PaginatedTableView
+import CoreData
 
 class UserListViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class UserListViewController: UIViewController {
     let service = UserRestService()
     
     var list = [User]()
+    var users: [NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,59 @@ class UserListViewController: UIViewController {
         
         tableView.loadData(refresh: true)
         
+        self.fetchUsers()
+        
     }
 
 }
 
 extension UserListViewController: PaginatedTableViewDelegate {
+    // will create service for this
+    func save(users: [User]) {
+        DispatchQueue.main.async {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            
+            let managedContext = appDelegate.persistentContainer.viewContext
+            managedContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
+            let entity = NSEntityDescription.entity(forEntityName: "UserDAO", in: managedContext)!
+            
+            for user in users {
+                let data = NSManagedObject(entity: entity, insertInto: managedContext)
+                data.setValue(user.login, forKey: "login")
+                data.setValue(user.id, forKey: "id")
+                data.setValue(user.html_url, forKey: "html_url")
+                data.setValue(user.avatar_url, forKey: "avatar_url")
+                
+                do {
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func fetchUsers() {
+        DispatchQueue.main.async {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserDAO")
+            
+            do {
+                let users: [NSManagedObject] = try managedContext.fetch(fetchRequest)
+                
+                print(users.count)
+                print(users[0].value(forKey: "login")!)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
@@ -44,6 +94,7 @@ extension UserListViewController: PaginatedTableViewDelegate {
         
         service.getUsers(since: startFrom) { (users) in
             self.list.append(contentsOf: users)
+            self.save(users: users)
             DispatchQueue.main.async {
                 onSuccess?(!users.isEmpty)
             }
@@ -85,8 +136,15 @@ extension UserListViewController: PaginatedTableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
-//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = storyboard?.instantiateViewController(identifier: "UserProfileViewController") as! UserProfileViewController
+        
+        vc.user = list[indexPath.row]
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
 }
